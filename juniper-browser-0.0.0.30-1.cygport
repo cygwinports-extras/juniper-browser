@@ -1,0 +1,19 @@
+DESCRIPTION="Lightweight WebKit/GTK+ browser"
+HOMEPAGE="http://code.google.com/p/juniper-browser/"
+SVN_URI="http://juniper-browser.googlecode.com/svn/"
+SVN_REV=${PVP[3]}
+
+inherit svn
+
+src_compile() {
+	lndirs
+	cd ${B}
+	./build.sh ${CFLAGS}
+}
+
+src_install() {
+	cd ${B}
+	dobin juniper.exe
+	insinto /usr/share/juniper
+	doins juniper.glade
+}
